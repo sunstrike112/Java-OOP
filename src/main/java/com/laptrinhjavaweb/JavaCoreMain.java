@@ -14,9 +14,9 @@ public class JavaCoreMain {
 		// primitive type (int, long, float, double, boolean) MUST have default value - cannot be null
 //		int testPrimitive = null;
 //		System.out.println(testPrimitive);
+//		CaChuon caChuon = new CaChuon("yellow", "black");
 		CaChuon caChuon = new CaChuon();
-		caChuon.colorEye ="yellow";
-		System.out.println("Color eye: " + caChuon.colorEye);
+		System.out.println("Color eye: " + caChuon.getColorEye());
 		caChuon.boi();
 		TestMain testMain = new TestMain();
 	}
