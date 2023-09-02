@@ -4,6 +4,9 @@ public class CaChuon extends LopCa {
 	private String colorEye;
 	private String colorSkin;
 	
+	public void boi() {
+		System.out.println("Cá chuồn bơi theo kiểu cá chuồn");
+	}
 	
 	// Contructor có 2 chức năng : Khởi tạo đối tượng và thiết lập giá trị
 	public CaChuon() {
