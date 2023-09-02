@@ -11,14 +11,17 @@ public class CaChuon extends LopCa {
 	}
 	
 	
-	// Từ khoá this đại diện cho class CaChuon
-	public CaChuon(String colorEye, String colorSkin) {
+	// Từ khoá this đại diện cho class CaChuon, chỉ tham chiếu đến các giá trị trong class đó
+	// Từ khoá super tham chiếu đến các giá trị ở class cha
+	public CaChuon(String colorEye, String colorSkin, String colorEyeParent, String colorSkinParent) {
 		this.colorEye = colorEye;
 		this.colorSkin = colorSkin;
+		super.colorEye = colorEyeParent;
+		super.colorSkin = colorSkinParent;
 	}
 
 	public String getColorEye() {
-		return colorEye;
+		return "Children: " + colorEye + " - Parent: " + super.getColorEye();
 	}
 
 	public String getColorSkin() {
