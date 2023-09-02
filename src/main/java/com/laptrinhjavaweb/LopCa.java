@@ -7,6 +7,10 @@ public class LopCa {
 	protected void boi() {
 		System.out.println("Cá nào mà chả biết bơi");
 	}
+	
+	protected void boi(String style) {
+		System.out.println(style);
+	}
 
 	public String getColorEye() {
 		return colorEye;
