@@ -17,11 +17,12 @@ public class JdbcMain {
 				Statement stmt = conn.createStatement();
 				ResultSet rs = stmt.executeQuery(QUERY);) {
 			while (rs.next()) {
-				System.out.print("Name: " + rs.getString("name"));
+				System.out.print("ID: " + rs.getLong("id"));
+				System.out.print(", Name: " + rs.getString("name"));
 				System.out.print(", Street: " + rs.getString("street"));
 				System.out.print(", District: " + rs.getString("district"));
 				System.out.print(", Ward: " + rs.getString("ward"));
-				System.out.println(", FloorArea: " + rs.getString("floorarea"));
+				System.out.println(", FloorArea: " + rs.getInt("floorarea"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
