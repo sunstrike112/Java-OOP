@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class JdbcExplain {
+public class JdbcBeginer {
 	static final String DB_URL = "jdbc:mysql://localhost:3306/javacore";
 	static final String USER = "root";
 	static final String PASS = "123456";
@@ -14,19 +14,15 @@ public class JdbcExplain {
 
 	public static void main(String[] args) {
 		try {
-			Integer value1 = 0/10;
-			System.out.println(value1);
 			Class.forName("com.mysql.jdbc.Driver");
-//			Integer value2 = 10/0;
-//			System.out.println(value2);
-		} catch (ClassNotFoundException e) {
-			System.out.println("Thiếu file JAR driver");
-		} catch (ArithmeticException e) {
-			System.out.println("Ngoại lệ Arithmetic Exception");
-		} catch (Exception e) {
-			System.out.println("Lỗi ngoại lệ");
+			Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(QUERY);
+			while (rs.next()) {
+				
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			System.out.println("Error: " + e.getMessage());
 		}
-
-//		System.out.println(10/0); //Runtime Exception
 	}
 }
