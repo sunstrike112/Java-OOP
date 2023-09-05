@@ -7,7 +7,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class JdbcBeginer {
+public class BuldingJdbc {
 //	static final String DB_URL = "jdbc:mysql://192.168.135.1:3306/javacore";
 	static final String DB_URL = "jdbc:mysql://localhost:3306/javacore";
 	static final String USER = "root";
@@ -24,12 +24,28 @@ public class JdbcBeginer {
 		Statement stmt = null;
 		ResultSet rs = null;
 		try {
-			String QUERY = "SELECT * FROM javacore.building where name like '%building%'";
+			StringBuilder query = new StringBuilder("SELECT * FROM building WHERE 1 = 1");
+			// Build query SQL
+			if (name != null && name != "") {
+				query.append(" AND name like '%"+name+"%'");
+			}
+			if (street != null && street != "") {
+				query.append(" AND street like '%"+street+"%'");
+			}
+			if (district != null && district != "") {
+				query.append(" AND district like '%"+district+"%'");
+			}
+			if (ward != null && ward != "") {
+				query.append(" AND ward like '%"+ward+"%'");
+			}
+			if (floorarea != null) {
+				query.append(" AND floorarea = "+floorarea+"");
+			}
 //			Class.forName("com.mysql.jdbc.Driver");
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(DB_URL, USER, PASS);
 			stmt = conn.createStatement();
-			rs = stmt.executeQuery(QUERY);
+			rs = stmt.executeQuery(query.toString());
 			ResultSetMetaData rsmd = rs.getMetaData();
 //			Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
 //			Statement stmt = conn.createStatement();
