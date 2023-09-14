@@ -7,6 +7,8 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import utils.StringUtils;
+
 public class BuldingJdbc {
 //	static final String DB_URL = "jdbc:mysql://192.168.135.1:3306/javacore";
 	static final String DB_URL = "jdbc:mysql://localhost:3306/javacore";
@@ -25,22 +27,25 @@ public class BuldingJdbc {
 		ResultSet rs = null;
 		try {
 			StringBuilder query = new StringBuilder("SELECT * FROM building WHERE 1 = 1");
+//			String sql = "SELECT * FROM building WHERE 1 = 1";
 			// Build query SQL
-			if (name != null && name != "") {
+			if (!StringUtils.isNullOrEmpty(name)) {
 				query.append(" AND name like '%"+name+"%'");
+				//sql += " AND name = ? ";
+//				sql += " AND name = "+name+"";
 			}
-			if (street != null && street != "") {
+			if (!StringUtils.isNullOrEmpty(street)) {
 				query.append(" AND street like '%"+street+"%'");
 			}
-			if (district != null && district != "") {
+			if (!StringUtils.isNullOrEmpty(district)) {
 				query.append(" AND district like '%"+district+"%'");
 			}
-			if (ward != null && ward != "") {
+			if (!StringUtils.isNullOrEmpty(ward)) {
 				query.append(" AND ward like '%"+ward+"%'");
 			}
-			if (floorarea != null) {
-				query.append(" AND floorarea = "+floorarea+"");
-			}
+//			if (floorarea != null) {
+//				query.append(" AND floorarea = "+floorarea+"");
+//			}
 //			Class.forName("com.mysql.jdbc.Driver");
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -51,7 +56,7 @@ public class BuldingJdbc {
 //			Statement stmt = conn.createStatement();
 //			ResultSet rs = stmt.executeQuery(QUERY);
 			while (rs.next()) {
-				System.out.print("ID: " + rs.getLong("id") + ", Type: " + rsmd.getColumnType(1));
+				System.out.print("ID: " + rs.getLong("id") + ", Type: " + rsmd.getColumnType(2));
 				System.out.print(", Name: " + rs.getString("name"));
 				System.out.print(", Street: " + rs.getString("street"));
 				System.out.print(", District: " + rs.getString("district"));

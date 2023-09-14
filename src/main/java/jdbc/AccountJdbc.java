@@ -10,7 +10,7 @@ import java.sql.Statement;
 import constant.SystemConstant;
 import utils.StringUtils;
 
-public class CustomerJdbc {
+public class AccountJdbc {
 //	static final String DB_URL = "jdbc:mysql://192.168.135.1:3306/javacore";
 	static final String DB_URL = "jdbc:mysql://localhost:3306/javacore";
 	static final String USER = "root";
@@ -19,7 +19,7 @@ public class CustomerJdbc {
 
 	public static void main(String[] args) {
 //		String name = null;
-		String fullName = null;
+		String userName = null;
 //		String street = null;
 //		String district = null;
 //		String ward = null;
@@ -29,10 +29,10 @@ public class CustomerJdbc {
 		Statement stmt = null;
 		ResultSet rs = null;
 		try {
-			StringBuilder query = new StringBuilder("SELECT * FROM customer "+SystemConstant.ONE_EQUAL_ONE+"");
+			StringBuilder query = new StringBuilder("SELECT * FROM account "+SystemConstant.ONE_EQUAL_ONE+"");
 			// Build query SQL
-			if (!StringUtils.isNullOrEmpty(fullName)) {
-				query.append(" AND name like '%"+fullName+"%'");
+			if (!StringUtils.isNullOrEmpty(userName)) {
+				query.append(" AND name like '%"+userName+"%'");
 			}
 //			Class.forName("com.mysql.jdbc.Driver");
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -45,7 +45,7 @@ public class CustomerJdbc {
 //			ResultSet rs = stmt.executeQuery(QUERY);
 			while (rs.next()) {
 //				System.out.print("ID: " + rs.getLong("id") + ", Type: " + rsmd.getColumnType(1));
-				System.out.print(", fullName: " + rs.getString("fullName"));
+				System.out.print(", userName: " + rs.getString("userName"));
 //				System.out.print(", Street: " + rs.getString("street"));
 //				System.out.print(", District: " + rs.getString("district"));
 //				System.out.print(", Ward: " + rs.getString("ward"));
