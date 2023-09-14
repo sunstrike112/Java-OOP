@@ -1,25 +1,25 @@
-package model;
+package dao.anhyeuem;
 
-public class BuildingModel extends BaseModel {
+public class BuildingAnhyeuem {
 	
+	private Long id;
 	private String name;
-	private String address;
 	private Integer floorArea;
 	private String ward;
 	private String street;
 	private String district;
 
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
 	}
 	public Integer getFloorArea() {
 		return floorArea;
@@ -42,8 +42,7 @@ public class BuildingModel extends BaseModel {
 	public String getDistrict() {
 		return district;
 	}
-	public void setDicstrict(String district) {
+	public void setDistrict(String district) {
 		this.district = district;
 	}
-	
 }

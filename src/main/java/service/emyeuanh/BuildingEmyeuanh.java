@@ -1,13 +1,14 @@
-package model;
+package service.emyeuanh;
 
-public class BuildingModel extends BaseModel {
-	
+public class BuildingEmyeuanh {
+
+	private Long id;
 	private String name;
 	private String address;
 	private Integer floorArea;
 	private String ward;
 	private String street;
-	private String district;
+	private String dicstrict;
 
 	public String getName() {
 		return name;
@@ -39,11 +40,17 @@ public class BuildingModel extends BaseModel {
 	public void setStreet(String street) {
 		this.street = street;
 	}
-	public String getDistrict() {
-		return district;
+	public String getDicstrict() {
+		return dicstrict;
 	}
-	public void setDicstrict(String district) {
-		this.district = district;
+	public void setDicstrict(String dicstrict) {
+		this.dicstrict = dicstrict;
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 }
