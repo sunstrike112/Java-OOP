@@ -7,14 +7,10 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import utils.ConnectionUtils;
 import utils.StringUtils;
 
 public class BuldingJdbc {
-//	static final String DB_URL = "jdbc:mysql://192.168.135.1:3306/javacore";
-	static final String DB_URL = "jdbc:mysql://localhost:3306/javacore";
-	static final String USER = "root";
-	static final String PASS = "123456";
-//	static final String QUERY = "SELECT * FROM building";
 
 	public static void main(String[] args) {
 		String name = null;
@@ -48,7 +44,7 @@ public class BuldingJdbc {
 //			}
 //			Class.forName("com.mysql.jdbc.Driver");
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			conn = DriverManager.getConnection(DB_URL, USER, PASS);
+			conn = ConnectionUtils.getConnection();
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(query.toString());
 			ResultSetMetaData rsmd = rs.getMetaData();
