@@ -4,10 +4,10 @@ public class BuildingAnhyeuem {
 	
 	private Long id;
 	private String name;
-	private Integer floorArea;
-	private String ward;
 	private String street;
+	private String ward;
 	private String district;
+	private Integer floorArea;
 
 	public Long getId() {
 		return id;

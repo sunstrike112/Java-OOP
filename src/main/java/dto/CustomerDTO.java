@@ -1,6 +1,6 @@
-package model;
+package dto;
 
-public class CustomerModel extends BaseModel {
+public class CustomerDTO extends BaseDTO {
 	
 	private String fullName;
 	private String phone;

@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import dao.BuildingDao;
 import dao.anhyeuem.BuildingAnhyeuem;
@@ -14,9 +16,10 @@ import utils.StringUtils;
 public class BuildingDaoImpl implements BuildingDao {
 	
 	@Override
-	public BuildingAnhyeuem[] findBuilding(Integer floorArea, String name, String ward, String district, String street) {
+	public List<BuildingAnhyeuem> findBuilding(Integer floorArea, String name, String ward, String street, String district) {
 		
-		BuildingAnhyeuem[] results = new BuildingAnhyeuem[] {};
+//		BuildingAnhyeuem[] results = new BuildingAnhyeuem[] {};
+		List<BuildingAnhyeuem> results = new ArrayList<>(); 
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -45,7 +48,7 @@ public class BuildingDaoImpl implements BuildingDao {
 			rs = stmt.executeQuery(query.toString());
 			ResultSetMetaData rsmd = rs.getMetaData();
 			
-			int i = 0;
+//			int i = 0;
 			while (rs.next()) {
 				BuildingAnhyeuem buildingAnhyeuem = new BuildingAnhyeuem();
 				buildingAnhyeuem.setName(rs.getString("name"));
@@ -54,8 +57,9 @@ public class BuildingDaoImpl implements BuildingDao {
 				buildingAnhyeuem.setDistrict(rs.getString("district"));
 				buildingAnhyeuem.setFloorArea(rs.getInt("floorarea"));
 				
-				results[i] = buildingAnhyeuem;
-				i++;
+//				results[i] = buildingAnhyeuem;
+//				i++;
+				results.add(buildingAnhyeuem);
 			}
 			
 			return results;
@@ -76,6 +80,6 @@ public class BuildingDaoImpl implements BuildingDao {
 				System.out.println("Error: " + e.getMessage());
 			}
 		}
-		return null;
+		return new ArrayList<>();
 	};
 }

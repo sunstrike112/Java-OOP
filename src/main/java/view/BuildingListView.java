@@ -1,27 +1,33 @@
 package view;
 
+import java.util.List;
+
 import controller.BuildingController;
-import model.BuildingModel;
+import input.BuildingSearchInput;
+import output.BuildingOutput;
 
 public class BuildingListView {
 	public static void main(String[] args) {
 		String name = null;
 		String street = null;
+//		String name = "building";
+//		String street = "bùi thị xuân";
 		String dicstrict = null;
 		String ward = null;
 		Integer floorArea = null;
 		
-		BuildingModel buildingSearch = new BuildingModel();
-		buildingSearch.setFloorArea(floorArea);
+		BuildingSearchInput buildingSearch = new BuildingSearchInput();
 		buildingSearch.setName(name);
+		buildingSearch.setStreet(street);
 		buildingSearch.setWard(ward);
-		buildingSearch.setDicstrict(dicstrict);
-		
+		buildingSearch.setDistrict(dicstrict);
+		buildingSearch.setFloorArea(floorArea);
+
 		BuildingController buildingController = new BuildingController();
-		BuildingModel[] buildings = buildingController.findBuilding(buildingSearch);
+		List<BuildingOutput> buildings = buildingController.findBuilding(buildingSearch);
 		
-		for (BuildingModel item: buildings) {
-			
+		for (BuildingOutput item: buildings) {
+			System.out.println(item.getName() + " - " + item.getAddress());
 		}
 	}
 }

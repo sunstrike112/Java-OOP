@@ -1,9 +1,11 @@
 package service;
 
-import model.BuildingModel;
-import service.emyeuanh.BuildingEmyeuanh;
+import java.util.List;
+
+import input.BuildingSearchInput;
+import output.BuildingOutput;
 
 public interface BuildingService {
 	
-	BuildingEmyeuanh[] findBuilding(BuildingModel buildingModel);
+	List<BuildingOutput> findBuilding(BuildingSearchInput buildingModel);
 }

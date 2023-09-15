@@ -1,6 +1,6 @@
-package model;
+package dto;
 
-public class BaseModel {
+public class BaseDTO {
 	private Long id;
 	
 	public Long getId() {
