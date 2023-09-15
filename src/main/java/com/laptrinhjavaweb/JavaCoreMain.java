@@ -1,5 +1,8 @@
 package com.laptrinhjavaweb;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class JavaCoreMain {
 	public static void main(String[] args) {
 //		CaChuon caChuon = new CaChuon("black children", "yellow children", "black parent", "yellow parent");

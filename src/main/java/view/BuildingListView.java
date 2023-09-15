@@ -9,7 +9,7 @@ public class BuildingListView {
 		String street = null;
 		String dicstrict = null;
 		String ward = null;
-		Integer floorArea = 100;
+		Integer floorArea = null;
 		
 		BuildingModel buildingSearch = new BuildingModel();
 		buildingSearch.setFloorArea(floorArea);
