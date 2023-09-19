@@ -27,7 +27,7 @@ public class BuildingListView {
 		List<BuildingOutput> buildings = buildingController.findBuilding(buildingSearch);
 		
 		for (BuildingOutput item: buildings) {
-			System.out.println(item.getName() + " - " + item.getAddress());
+			System.out.println(item.getName() + " - " + item.getAddress() + " - " + item.getType());
 		}
 	}
 }

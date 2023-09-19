@@ -1,7 +1,9 @@
 package service.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import dao.BuildingDao;
 import dao.anhyeuem.BuildingAnhyeuem;
@@ -13,6 +15,33 @@ import service.BuildingService;
 public class BuildingServiceImpl implements BuildingService {
 	
 	private BuildingDao buildingDao = new BuildingDaoImpl();
+	
+    private static Map<String, String> typeMapping = new HashMap<>();
+
+    static {
+    	typeMapping.put("tang_tret", "tầng trệt");
+    	typeMapping.put("nguyen_can", "nguyên căn");
+    }
+    
+    public static String convertString(String input) {
+        StringBuilder result = new StringBuilder();
+        String[] parts = input.split(",");
+
+        for (String part : parts) {
+            String trimmedPart = part.trim();
+            if (typeMapping.containsKey(trimmedPart)) {
+                result.append(typeMapping.get(trimmedPart));
+            } else {
+                result.append(trimmedPart);
+            }
+            result.append(", ");
+        }
+        if (result.length() > 2) {
+            result.setLength(result.length() - 2);
+        }
+
+        return result.toString();
+    }
 
 	@Override
 	public List<BuildingOutput> findBuilding(BuildingSearchInput buildingSearchInput) {
@@ -29,6 +58,7 @@ public class BuildingServiceImpl implements BuildingService {
 			BuildingOutput buildingOutput = new BuildingOutput();
 			buildingOutput.setName(item.getName());
 			buildingOutput.setAddress(item.getStreet() + " - " + item.getWard() + " - " + item.getDistrict());
+			buildingOutput.setType(convertString(item.getType()));
 			
 			buildingOutputs.add(buildingOutput);
 			

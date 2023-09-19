@@ -56,6 +56,7 @@ public class BuildingDaoImpl implements BuildingDao {
 				buildingAnhyeuem.setWard(rs.getString("ward"));
 				buildingAnhyeuem.setDistrict(rs.getString("district"));
 				buildingAnhyeuem.setFloorArea(rs.getInt("floorarea"));
+				buildingAnhyeuem.setType(rs.getString("type"));
 				
 //				results[i] = buildingAnhyeuem;
 //				i++;
