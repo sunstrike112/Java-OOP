@@ -5,42 +5,31 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import constant.SystemConstant;
 import dao.BuildingDao;
 import dao.anhyeuem.BuildingAnhyeuem;
 import dao.impl.BuildingDaoImpl;
 import input.BuildingSearchInput;
 import output.BuildingOutput;
 import service.BuildingService;
+import utils.StringUtils;
 
 public class BuildingServiceImpl implements BuildingService {
 	
 	private BuildingDao buildingDao = new BuildingDaoImpl();
 	
-    private static Map<String, String> typeMapping = new HashMap<>();
-
-    static {
-    	typeMapping.put("tang_tret", "tầng trệt");
-    	typeMapping.put("nguyen_can", "nguyên căn");
-    }
+	private static Map<String, String> typeMapping = StringUtils.createTranslationMap();
     
-    public static String convertString(String input) {
-        StringBuilder result = new StringBuilder();
-        String[] parts = input.split(",");
+    public static String convertString(String inputStr) {
+        String[] words = inputStr.split(",");
+        StringBuilder translatedWords = new StringBuilder();
 
-        for (String part : parts) {
-            String trimmedPart = part.trim();
-            if (typeMapping.containsKey(trimmedPart)) {
-                result.append(typeMapping.get(trimmedPart));
-            } else {
-                result.append(trimmedPart);
-            }
-            result.append(", ");
-        }
-        if (result.length() > 2) {
-            result.setLength(result.length() - 2);
+        for (String word : words) {
+            String trimmedWord = word.trim();
+            translatedWords.append(typeMapping.getOrDefault(trimmedWord, trimmedWord)).append(", ");
         }
 
-        return result.toString();
+        return translatedWords.toString().replaceAll(", $", "");
     }
 
 	@Override
