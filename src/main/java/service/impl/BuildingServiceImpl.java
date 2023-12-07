@@ -61,15 +61,16 @@ public class BuildingServiceImpl implements BuildingService {
 			// insert
 			// DTO --> anhyeuem
 			BuildingAnhyeuem buildingAnhyeuem = buildingConverter.convertFromDtoToAnhyeuem(buildingDTO);
-			Long buildingId = buildingDao.insert(buildingAnhyeuem);
-			if (buildingDTO.getRentAreas().length() > 0) {
-				for (String item : buildingDTO.getRentAreas().split(",")) {
-					RentAreaAnhyeuem rentAreaAnhyeuem = new RentAreaAnhyeuem();
-					rentAreaAnhyeuem.setValue(Integer.parseInt(item));
-					rentAreaAnhyeuem.setBuildingId(buildingId);
-					rentAreaDao.insert(rentAreaAnhyeuem);
-				}
-			}
+//			Long buildingId = buildingDao.insert(buildingAnhyeuem);
+//			if (buildingDTO.getRentAreas().length() > 0) {
+//				for (String item : buildingDTO.getRentAreas().split(",")) {
+//					RentAreaAnhyeuem rentAreaAnhyeuem = new RentAreaAnhyeuem();
+//					rentAreaAnhyeuem.setValue(Integer.parseInt(item));
+//					rentAreaAnhyeuem.setBuildingId(buildingId);
+//					rentAreaDao.insert(rentAreaAnhyeuem);
+//				}
+//			}
+			buildingDao.insert(buildingAnhyeuem, buildingDTO.getRentAreas());
 		} else {
 			// update
 		}
