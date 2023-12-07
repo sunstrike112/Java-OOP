@@ -18,6 +18,7 @@ public class BuildingController {
 	}
 
 	public BuildingDTO insert(BuildingDTO newBuilding) {
+		buildingService.save(newBuilding);
 		return null;
 	}
 }

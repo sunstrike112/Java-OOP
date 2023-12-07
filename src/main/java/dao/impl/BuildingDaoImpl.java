@@ -82,5 +82,26 @@ public class BuildingDaoImpl implements BuildingDao {
 			}
 		}
 		return new ArrayList<>();
-	};
+	}
+
+	@Override
+	public Long insert(BuildingAnhyeuem buildingAnhyeuem) {
+		String sql = "INSERT INTO building(name) VALUES ("+buildingAnhyeuem.getName()+")";
+		ResultSet resultSet = null;
+		Long id = null;
+		try (Connection conn = ConnectionUtils.getConnection(); Statement stmt = conn.createStatement();) {
+			int flag = stmt.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
+			resultSet = stmt.getGeneratedKeys();
+			if (flag > 0) {
+				while (resultSet.next()) {
+					id = resultSet.getLong(1);
+				}
+			}
+			resultSet.close();
+			return id;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }
