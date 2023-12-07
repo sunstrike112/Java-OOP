@@ -16,7 +16,7 @@ public class BuildingController {
 		List<BuildingOutput> results = buildingService.findBuilding(buildingSearch); 
 		return results;
 	}
-	
+
 	public BuildingDTO insert(BuildingDTO newBuilding) {
 		return null;
 	}
