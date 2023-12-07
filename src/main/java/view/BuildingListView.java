@@ -12,10 +12,10 @@ public class BuildingListView {
 		String street = null;
 //		String name = "building";
 //		String street = "bùi thị xuân";
-		String dicstrict = null;
+		String dicstrict = "101";
 		String ward = null;
 		Integer floorArea = null;
-		
+
 		BuildingSearchInput buildingSearch = new BuildingSearchInput();
 		buildingSearch.setName(name);
 		buildingSearch.setStreet(street);
@@ -25,8 +25,8 @@ public class BuildingListView {
 
 		BuildingController buildingController = new BuildingController();
 		List<BuildingOutput> buildings = buildingController.findBuilding(buildingSearch);
-		
-		for (BuildingOutput item: buildings) {
+
+		for (BuildingOutput item : buildings) {
 			System.out.println(item.getName() + " - " + item.getAddress() + " - " + item.getType());
 		}
 	}
